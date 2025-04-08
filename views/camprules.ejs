@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FamCamp Home</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <style>
+        .card-image {
+            width: 362px;
+            height: 200px;
+        }
+        .center-text {
+            text-align: center;
+        }
+        .white-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar-header-text center-text">
+            Hill Air Force Base FamCamp
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aboutus">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="camprules">Camp Rules<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reservation">Reservations/Pricing</a>
+                    </li>
+                    <span class="navbar-text nav-item">
+                        <% if (!loggedIn) { %>
+                            <a class="btn btn-link" href="/login" id="login">Log-in</a>
+                        <% } else { %>
+                            <a class="btn btn-link" href="/logout" id="logout">Log-out</a>
+                        <% } %>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="center-text">Camp Rules</h1>
+        <div class="row">
+            <div class="col-md-6 white-box">
+                <h4>Check in and Check out</h4>
+                <h6>Check in is after 1300</h6>
+                <h6>Check out is by 1200</h6>
+                <h6>Quiet Hours are 2200-0800</h6>
+                <h6>Generator use is not permitted during quiet hours</h6>
+                <ul>
+                    <li><b>Rec Room:</b> Features include microwave, dining area, TV lounge, study room and book exchange. Wifi is available in or near the building. 
+                        Stop by the office to check out our free DVD Rentals.
+                    </li>
+                    <li>
+                        <b>Laundry:</b> Machines cost $1 per cycle and a coin machine is available in the Laundry room. Please do not launder pet bedding or heavily soiled items in these machines.
+                    </li>
+                    <li>
+                        <b>Ice:</b> Available in the Laundry Room free of charge. Please refrain from filling large ice chests.
+                    </li>
+                </ul>
+                <h4>Payments</h4>
+                <h6>Payments can be made with Visa/MasterCard or cash in the office during regular hours. 
+                    After-Hours arrivals must pay cash only and use the check-in booth located next to the office. Personal checks are not accepted.
+                </h6>
+                <h4>Reservations</h4>
+                <ul>
+                    <li>Reservations can be made up to 6 months in advance and must be paid in full at time of reservation.</li>
+                    <li>Cancellations made at least 3 days before arrival will be charged a $10 fee. Cancellations made less than 3 days prior will be charged a 1 day fee.</li>
+                    <li>Maximum length of stay April-October is 14 consecutive days except for those traveling on PCS orders. Long term stays are allowed October 15th to April 1st.
+                        For detailed information, please contact the FamCamp office.
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 white-box">
+                <h4>Guidelines</h4>
+                <h6>In an effort to ensure compliance with all public health and safety requirements, RV's are subject to inspection when conditions observed from the exterior of the RV suggest
+                    a potential hazard or substandard condition exists within the unit. In the event of an inspection, all RV units must be able to demonstrate the following:
+                </h6>
+                <ul>
+                    <li>Proper connection to the park's fresh water system when using the unit's exterior water connection. The fresh water connector on the unit should be inspected to ensure
+                        it is leak-free and made of a material approved for potable water.
+                    </li>
+                    <li>Power cord and/or approved adapter is approved for RV use and maintained in a safe operating condition.</li>
+                    <li>The sewer drain connection on the unit must be gas tight and leak-free. Hose must be constructed of a minimum schedule 40 ABS plastic approved for drain and waste.</li>
+                </ul>
+                <h4>Pets</h4>
+                <h6>Leashed and vaccinated pets are welcome provided pet owners adhere to the following installation requirements:</h6>
+                <ul>
+                    <li>Animal waste will be picked up and properly disposed of immediately.</li>
+                    <li>Pets will remain on a leash in control of the owner unless in the designated dog park area.</li>
+                    <li>When using the dog park, the pet owner must be present at all times.</li>
+                    <li>Dogs will not be chained outdoors or left unattended at any time.</li>
+                    <li>In consideration of other guests, nuisance pet behavior will not be permitted. This is to include but not be limited to pets that display aggression
+                        and/or excessive barking.
+                    </li>
+                    <li>2 pet maximum.</li>
+                    <li>Dogs with any of the following breed lineage are restricted from FamCamp: Pit bulls, Staffordshire Terriers, Rottweilers, Chow Chows, Doberman Pinschers, wolf hybrids.</li>
+                </ul>
+                <h4>Parking</h4>
+                <h6>Vehicles are only allowed to park in assigned spaces. Parking on vacant sites or roadways is not authorized.
+                     Please see Camp Host or Staff for information on overflow parking and visitor areas. Parking on grass is not permitted.
+                </h6>
+            </div>
+        </div>
+    </div>
+    <!--Scripts enable navbar to function on a smaller screen with a toggle button-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

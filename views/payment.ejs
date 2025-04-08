@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <title>Payment Page</title>
+    <style>
+        .navbar-header-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem 0;
+            background-color: darkgoldenrod;
+            margin-bottom: 0;
+        }
+        .navbar-nav {
+            flex: 1;
+            justify-content: space-around;
+            background-color: #F5DAAB;
+            margin-top: 0;
+        }
+        .navbar-nav .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 1px 0px 0px 0px;
+        }
+        body {
+            background-color: #E3EEF1;
+        }
+        .card-image {
+            width: 362px;
+            height: 200px;
+        }
+
+        #change-password-input {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        #change-password-div {
+            background-color: #F5DAAB;
+        }
+
+        #username-div {
+            padding: 10px;
+            margin-left: 21px;
+        }
+
+        #change-password-button {
+            border: none;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 12px;
+            margin: 8px 2px;
+            margin-left: 140px;
+            cursor: pointer; 
+            background-color: blue;
+            border-radius: 12px;
+        }
+
+        #confirmation {
+            background-color: #F5DAAB;
+            padding: 10px;
+            text-align: center;
+            
+        }
+
+        #form {
+            text-align: center;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar-header-text">
+        Hill Air Force Base FamCamp
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutus">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/camprules">Camp Rules</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reservation">Reservations/Pricing</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div id="form">
+    <h1>Payment for your Reservation <%= reservationId %></h1>
+    <% if (message) { %>
+        <p style="color: red;"><%= message %></p>
+    <% } %>
+    <form action="/payment" method="post">
+        <input type="hidden" name="reservation_id" value="<%= reservationId %>">
+        <div style="margin: 10px;">
+            <label for="cardNum">Card Number:</label>
+            <input type="text" name="cardNum" id="cardNum" required>
+        </div>
+        <div style="margin: 10px;">
+            <label for="expiration_date">Expiration Date (MM/YY):</label>
+            <input type="text" name="expiration_date" id="expiration_date" required>
+        </div>
+        <div style="margin: 10px;">
+            <label for="billing_info">Billing Information:</label>
+            <textarea name="billing_info" id="billing_info" required></textarea>
+        </div>
+        <div>
+            <button type="submit">Pay</button>
+        </div>
+    </form>
+    </div>
+</body>
+</html>

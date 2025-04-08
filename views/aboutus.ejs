@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FamCamp Home</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <style>
+        .card-image {
+          width: 362px;
+          height: 200px;
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar-header-text">
+            Hill Air Force Base FamCamp
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="aboutus">About Us<span class="sr-only">(current)</span></a>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="camprules">Camp Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reservation">Reservations/Pricing</a>
+                    </li>
+                    <span class="navbar-text nav-item">
+                        <% if (!loggedIn) { %>
+                            <a class="btn btn-link" href="/login" id="login">Log-in</a>
+                        <% } else { %>
+                            <a class="btn btn-link" href="/logout" id="logout">Log-out</a>
+                        <% } %>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1>About Us</h1>
+    <p>We are Hill Airforce Base Fam Camp! We are located on Hill Air Force Base on the south side of the Warrior Clinic.
+        We have plenty of RV spaces for your and your family to enjoy! Are you moving to/from Hill on PCS orders?
+        Stay with us as long as you need to move in, or head to your next duty station!
+    </p>
+
+    <!--Scripts enable navbar to function on a smaller screen with a toggle button-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

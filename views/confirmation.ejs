@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <title>Confirmation Page</title>
+
+    <style>
+        .navbar-header-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem 0;
+            background-color: darkgoldenrod;
+            margin-bottom: 0;
+        }
+        .navbar-nav {
+            flex: 1;
+            justify-content: space-around;
+            background-color: #F5DAAB;
+            margin-top: 0;
+        }
+        .navbar-nav .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 1px 0px 0px 0px;
+        }
+        body {
+            background-color: #E3EEF1;
+        }
+        .card-image {
+            width: 362px;
+            height: 200px;
+        }
+
+        #change-password-input {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        #change-password-div {
+            background-color: #F5DAAB;
+        }
+
+        #username-div {
+            padding: 10px;
+            margin-left: 21px;
+        }
+
+        #change-password-button {
+            border: none;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 12px;
+            margin: 8px 2px;
+            margin-left: 140px;
+            cursor: pointer; 
+            background-color: blue;
+            border-radius: 12px;
+        }
+
+        #confirmation {
+            background-color: #F5DAAB;
+            padding: 10px;
+            text-align: center;
+            
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar-header-text">
+        Hill Air Force Base FamCamp
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutus">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/camprules">Camp Rules</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reservation">Reservations/Pricing</a>
+                </li>
+                <span class="navbar-text nav-item">
+                    <% if (!loggedIn) { %>
+                        <a class="btn btn-link" href="/login" id="login">Log-in</a>
+                    <% } else { %>
+                        <a class="btn btn-link" href="/logout" id="logout">Log-out</a>
+                    <% } %>
+                </span>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h1 style="text-align: center;">Confirmation Page</h1>
+<div class="container">
+    <div class="reservationConfirmation" id="confirmation">
+    <p>Your Reservation Confirmation Number: <strong><%= reservationId %></strong></p>
+    <p>Confirmed Site ID: <strong><%= siteNumber %></strong></p>
+    <p>Your reservation confirmation has been sent to your email!</p>
+    </div>
+</div>
+    
+
+    <!--Scripts enable navbar to function on a smaller screen with a toggle button-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

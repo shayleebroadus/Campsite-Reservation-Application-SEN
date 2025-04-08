@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/EmployeeStyle.css">
+
+    <title>Reservation Details</title>
+    <style>
+        /* General styles */
+        body {
+            background-color: #E3EEF1;
+            text-align: center; /* Center align everything */
+            font-family: Arial, sans-serif; /* Specify a font */
+        }
+
+        /* Navbar and header styles */
+        .navbar-header-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background-color: darkgoldenrod;
+            margin-bottom: 0;
+            text-align: center; /* Center align text */
+            padding: 1rem 0;
+        }
+
+        .navbar-nav {
+            flex: 1;
+            justify-content: space-around;
+            background-color: #F5DAAB;
+            margin-top: 0;
+        }
+
+        .navbar-nav .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 1px 0px 0px 0px;
+        }
+
+        /* Form container and input/button styles */
+        .form-container {
+            margin-top: 20px; /* Adjust top margin as needed */
+            display: flex;
+            justify-content: center; /* Center align horizontally */
+            align-items: center; /* Center align vertically */
+            flex-direction: column; /* Stack items vertically */
+        }
+
+        .form-container input[type="text"] {
+            width: 200px; /* Adjust width as needed */
+            padding: 10px; /* Padding for input */
+            margin-bottom: 10px; /* Space below input */
+            box-sizing: border-box; /* Include padding and border in width */
+            text-align: center; /* Center align text */
+        }
+
+        .form-container button[type="submit"] {
+            background-color: #F0AD4E; /* Use one of the listed colors */
+            color: #fff; /* Text color */
+            border: none; /* No border */
+            padding: 10px 20px; /* Padding for button */
+            cursor: pointer; /* Pointer cursor */
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .form-container button[type="submit"]:hover {
+            background-color: #EC971F; /* Darker color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar-header-text">
+            Make A Reservation
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Camp Rules</a>
+                    </li>
+                    <li class="nav-item" hidden>
+                        <a class="nav-link" href="#">View reports</a>
+                    </li>
+                    <li class="nav-item" hidden>
+                        <a class="nav-link" href="#">My Reservations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reservations/Pricing <span class="sr-only">(current)</span></a>
+                    </li>
+                    <span class="navbar-text nav-item">
+                        <button type="button" class="btn btn-link" name="logout" id="logout">Log-out</button>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 class="mt-4 mb-4">Customer Page</h1>
+
+    <div class="form-container">
+        <form action="/customer" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" class="form-control" value="<%= username ? username : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" class="form-control" value="<%= users.first_name ? users.first_name : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" value="<%= users.last_name ? users.last_name : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="address line 1">Street Address 1</label>
+                            <input type="text" id="address_line_1" name="address_line_1" class="form-control" value="<%= users.address_line_1 ? users.address_line_1 : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="address line 2">Street Address 2</label>
+                            <input type="text" id="address_line_2" name="address_line_2" class="form-control" value="<%= users.address_line_2 ? users.address_line_2 : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" class="form-control" value="<%= users.city ? users.city : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" class="form-control" value="<%= users.state ? users.state : '' %>">
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="form-group">
+                            <label for="zip">Zip Code</label>
+                            <input type="text" id="zip" name="zip" class="form-control" value="<%= users.zip ? users.zip : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" id="email" name="email" class="form-control" value="<%= users.email_address ? users.email_address : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="_rank">Rank</label>
+                            <input type="text" id="_rank" name="_rank" class="form-control" value="<%= users._rank ? users._rank : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="branch">Branch of Service</label>
+                            <input type="text" id="branch" name="branch" class="form-control" value="<%= users.branch_of_service ? users.branch_of_service : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="duty_status">Duty Status</label>
+                            <input type="text" id="duty_status" name="duty_status" class="form-control" value="<%= users.duty_status ? users.duty_status : '' %>">
+                        </li>
+                        <li class="form-group">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="text" id="phone_number" name="phone_number" class="form-control" value="<%= users.phone_number ? users.phone_number : '' %>">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary mt-2" type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

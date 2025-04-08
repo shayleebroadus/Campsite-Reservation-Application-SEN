@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/EmployeeStyle.css">
+
+    <title>Reservation Details</title>
+    <style>
+        .navbar-header-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem 0;
+            background-color: darkgoldenrod;
+            margin-bottom: 0;
+        }
+        .navbar-nav {
+            flex: 1;
+            justify-content: space-around;
+            background-color: #F5DAAB;
+            margin-top: 0;
+        }
+        .navbar-nav .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 1px 0px 0px 0px;
+        }
+        body {
+          background-color: #E3EEF1;
+        }
+        .card-image {
+          width: 362px;
+          height: 200px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+        $(document).ready(() => { 
+        $('.search').on('submit', () => { 
+            console.log("Search Submitted")
+            return false; 
+        }); 
+    }); 
+    $('.search').keypress((e) => { 
+  
+        // Enter key corresponds to number 13 
+        if (e.which === 13) { 
+            $('.search').submit(); 
+            console.log('form submitted'); 
+        } 
+    })
+    </script>
+    <script>
+
+        function Search(){
+            document.getElementById("searchbool").value=true;
+        }
+    </script>
+
+    <script>
+        function ChangePass(){
+            document.getElementById("changebool").value=true;
+        }
+    </script>
+
+    <script>
+        function MakeReservation(){
+            document.getElementById("reservebool").value=true;
+        }
+    </script>
+
+    <script>
+        function ViewSites(){
+            document.getElementById("sitechange").value=true;
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var fromDateInput = document.getElementById('fromDate');
+            var toDateInput = document.getElementById('toDate');
+    
+            var firstNight = '<%= reservations[0].first_night ? reservations[0].first_night.toISOString().slice(0, 10) : "" %>';
+            var lastNight = '<%= reservations[0].last_night ? reservations[0].last_night.toISOString().slice(0, 10) : "" %>';
+
+    
+            if (firstNight) {
+                fromDateInput.value = firstNight;
+            }
+    
+            if (lastNight) {
+                toDateInput.value = lastNight;
+            }
+        });
+    </script>
+</head>
+    
+<body>
+    <div class="container">
+        <div class="navbar-header-text">
+            Make A Reservation
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Camp Rules</a>
+                    </li>
+                    <li class="nav-item" hidden>
+                        <a class="nav-link" href="#">View reports</a>
+                    </li>
+                    <li class="nav-item" hidden>
+                        <a class="nav-link" href="#">My Reservations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reservations/Pricing <span class="sr-only">(current)</span></a>
+                    </li>
+                    <span class="navbar-text nav-item">
+                        <% if (!loggedIn) { %>
+                            <a class="btn btn-link" href="/login" id="login">Log-in</a>
+                        <% } else { %>
+                            <a class="btn btn-link" href="/logout" id="logout">Log-out</a>
+                        <% } %>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="grid-container">
+        
+        <div class="r1c1">
+<!--This will be a page to show the reservation details-->
+            <div class="res-grid">
+                
+                <div id="col1">
+                    <img src="../images/site16Trlr.jpg" alt="Site 16 sample picture" width="400" height="300">
+                    <form action="/editReservation/change" method="post">
+                        <label for="selectsite">Site: </label>
+                        <select name="selectsite" id="selectsite">
+                            <option value="tnt"><%= reservations[0].site_id %></option>
+                            <option value="tnt">Tent</option>
+                            <option value="DA">Dry Storage A</option>
+                            <option value="DB">Dry Storage B</option>
+                            <option value="DC">Dry Storage C</option>
+                            <option value="DD">Dry Storage D</option>
+                            <option value="11B">Trailer Rent 11</option>
+                            <option value="12B">Trailer Rent 12</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
+                        </select>
+                        <br/>
+                        <label for="fromDate">Date From: </label>
+                        <input name="fromDate" id="fromDate" type="date" placeholder= firstNight>
+                        <br/>
+                        <label for="toDate">To: </label>
+                        <input name="toDate" id="toDate" type="date" placeholder= lastNight>
+                        <br/>                           
+                        <label for="pcs">Are You on PCS orders?</label>
+                        <select name="pcssub" id="pcs" >
+                            <option value="No"><%= reservations[0].PCS %></option>
+                            <option value="No">No</option>
+                            <option value="Out">PCS Out</option>
+                            <option value="In">PCS In</option>
+                        </select>
+                        <br/>
+                        <p>Notes: </p>
+                        <input id="resNote" name="resNote">
+                        <br/>
+                        <input id="ruleAgreement" name="ruleagree" type="checkbox" required>
+                        <label id="labelagree" for="ruleAgreement">I have read, understand, and agree to FampCamp Site and Reservation Rules</label>
+                        <br/>
+                        <button type="submit">Update Reservation</button>
+                        <input id="reservebool" name="reservebool" hidden value="">
+                    </form>
+                
+                    <form action="/editReservation/cancel" method="post">
+                        <button type="submit">Cancel Reservation</button>
+                    </form>  
+                    
+                    <p id="message"><%- locals.message %></p>
+                </div>             
+                <aside id="col2">
+                    
+                    
+                    <h2>Site Details</h2>
+                    
+                    <div id="siteDetails">
+                        <form action="/editReservation" method="post">
+                        <label for="trailer">Trailer size (ft): </label>
+                        <input name="trailersize" id="trailer" type="number" required value="25">
+                        <label for="site">Site: </label>
+                        <select name="site" id="site">
+                            <option value="tnt">Tent</option>
+                            <option value="DA">Dry Storage A</option>
+                            <option value="DB">Dry Storage B</option>
+                            <option value="DC">Dry Storage C</option>
+                            <option value="DD">Dry Storage D</option>
+                            <option value="11B">Trailer Rent 11</option>
+                            <option value="12B">Trailer Rent 12</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
+                        </select>
+                        <button type="submit">Get Site Details</button>
+                    </form>
+                        <p>Type: <%= sites[0].site_type %></p>
+                        <p>Length: <%= sites[0].length %></p>
+                        <p>Hook-ups: <%= sites[0].has_hookups %></p>
+                    </div>
+                    <div id="cost">
+                        <p>Cost </p>
+                        <p>per night: $<%= sites[0].cost_per_night %></p>
+                        <p>per week: $<%= sites[0].cost_per_night * 7.0%></p>
+                        <p>per month: $<%= sites[0].cost_per_night * 28.0%></p>
+                    </div>           
+                </aside>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

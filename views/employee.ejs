@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/EmployeeStyle.css">
+    <title>Camp Reports</title>
+    <style>
+        .navbar-header-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem 0;
+            background-color: darkgoldenrod;
+            margin-bottom: 0;
+        }
+        .navbar-nav {
+            flex: 1;
+            justify-content: space-around;
+            background-color: #F5DAAB;
+            margin-top: 0;
+        }
+        .navbar-nav .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 1px 0px 0px 0px;
+        }
+        body {
+        background-color: #E3EEF1;
+        }
+        .card-image {
+        width: 362px;
+        height: 200px;
+        }
+    </style>
+
+    <!--Record Selected-->
+    <script>
+        function ViewRecordOcc(event){
+            document.getElementById("selectOccupied").value=true;
+        }
+    </script>
+
+    <script>
+        function ViewRecordVacant(event){
+            document.getElementById("selectVacant").value=true;
+        }
+    </script>
+
+    <!--Report Type-->
+    <script>
+        function ReportFilter(event){
+            document.getElementById("getreport").value= true;
+        }
+                  
+    </script>
+
+    <!--Change Password-->
+    <script>
+        function ChangePassword(event){
+            document.getElementById("changepassword").value=true;
+        }
+    </script>
+</head>
+
+
+
+
+<body>
+    <div class="container">
+        <div class="navbar-header-text">
+            View Reports
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="aboutus">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="camprules">Camp Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="employee">View reports <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reservation">Reservations/Pricing</a>
+                    </li>
+                    <span class="navbar-text nav-item">
+                        <% if (!loggedIn) { %>
+                            <a class="btn btn-link" href="/login" id="login">Log-in</a>
+                        <% } else { %>
+                            <a class="btn btn-link" href="/logout" id="logout">Log-out</a>
+                        <% } %>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="grid-container">
+        
+        <div class="r1c1">
+            <%if(locals.records.rows.length){%>
+            <% if(locals.records.type=="occupancy"){ %>
+                <h3>Occupancy Report</h3>
+            <table id="report">
+                <thead>
+                    <tr>
+                        <th>Last Name</th>
+                        <th>Site</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Notes</th>
+                        <th>View Reservation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i =0; i < locals.records.rows.length; i++){ %>
+                    
+                    <tr>
+                        <td><%- locals.records.rows[i].last_name%></td>
+                        <td><%- locals.records.rows[i].site_id%></td>
+                        <td><%- locals.records.rows[i].first_night%></td>
+                        <td><%- locals.records.rows[i].last_night%></td>
+                        <td><input name="empNotes">
+                        </td>
+                        <td>
+                            <form onsubmit="return ViewRecordOcc(event)" method="post">
+                                <button type="submit" name="btnOccupied" value="<%-locals.records.rows[i].site_id %>">Select</button>
+                                <input hidden id="selectOccupied" name="selectOccupied" value="false">
+                            </form>
+                        </td>
+                    </tr>
+                    
+                    <%}%>
+                </tbody>
+            </table>
+            <%} else if (locals.records.type=="vacancy"){ %>
+            <h3>Available Sites</h3>
+            <table id="report">
+                <thead>
+                    <tr>
+                        <th>Site</th>
+                        <th>Available Until</th>
+                        <th>Hookups</th>
+                        <th>per night</th>
+                        <th>View Site</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(var i= 0; i< locals.records.rows.length; i++) {%>
+                    <tr>
+                        <td><%- locals.records.rows[i].site_id %></td>
+                        <td><%- locals.records.rows[i].Vacant %></td>
+                        <td><%- locals.records.rows[i].has_hookups %></td>
+                        <td><%- locals.records.rows[i].cost_per_night %></td>
+                        <td> 
+                            <form onsubmit="return ViewRecordVacant(event)" method="post">
+                                <button type="submit" name="btnVacant" value="<%-locals.records.rows[i].site_id %>">Select</button>
+                                <input hidden id="selectVacant" name="selectVacant" value="false">
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <% } %>
+            <% } else{%>
+            <!--else if report type = y-->
+            <!--else if report type = z-->
+            <p>No Records</p>
+            <% } %>
+        </div>
+        <div class="r1c2">
+<!--This will hold a select report and the change password ability -->
+            <div id="reportchoice">
+                <form onsubmit="return ReportFilter(event)" method="post">
+                    <label for="repType">Report Type:</label>
+                    <select name="report" id="repType">
+                        <% if(locals.records.type=="occupancy"){%>
+                        <option value="occupancy" selected>Occupancy</option>
+                        <option value="vacancy">Vacancy</option>
+                        <% } else if(locals.records.type=="vacancy"){%>
+                            <option value="occupancy">Occupancy</option>
+                            <option value="vacancy" selected>Vacancy</option>
+                        <%} else{%>
+                        <option value="occupancy">Occupancy</option>
+                        <option value="vacancy">Vacancy</option>
+                        <%}%>
+                    </select>
+                    <button type="submit">Get Report</button>
+                    <input hidden id="getreport" name="getreport" value="false">
+                </form>
+            </div>
+            <div id="changePass">
+                <form onsubmit="return ChangePassword(event)" method="post">
+                    <button type="submit">Change Password</button>
+                    <input hidden id="changepassword" name="changepassword" value="false">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

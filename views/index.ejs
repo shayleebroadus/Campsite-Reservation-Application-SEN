@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FamCamp Home</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <style>
+        .card-image {
+          width: 362px;
+          height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar-header-text">
+            Hill Air Force Base FamCamp
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">>Home<span class="sr-only">(current)</span</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="aboutus">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="camprules">Camp Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reservation">Reservations/Pricing</a>
+                    </li>
+                    <span class="navbar-text nav-item">
+                        <% if (!loggedIn) { %>
+                            <a class="btn btn-link" href="/login" id="login">Log-in</a>
+                        <% } else { %>
+                            <a class="btn btn-link" href="/logout" id="logout">Log-out</a>
+                        <% } %>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card mb-4">
+                  <img class="card-img-top" src="../images/rv_image.jpeg" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Reserve an RV Spot</h5>
+                      <p class="card-text">Reserve an RV spot with or without hookups.</p>
+                      <p><a class="btn btn-light" href="reservation">Make Reservation</a></p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card mb-4">
+                  <img class="card-img-top" src="../images/camping_tent.jpeg" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Reserve a tent spot</h5>
+                      <p class="card-text">Reserve a small tent spot.</p>
+                      <p><a class="btn btn-light" href="reservation">Make Reservation</a></p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card mb-4">
+                  <img class="card-img-top" src="../images/dry_storage.jpeg" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">Dry Storage</h5>
+                      <p class="card-text">Reserve a storage spot for your RV or camping trailer.</p>
+                      <p><a class="btn btn-light" href="reservation">Make Reservation</a></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    <div class="container">
+        <p>Welcome to FamCamp!</p>
+        <br>
+        <p>See my reservations <a href="myReservations" class btn btn-primary>My Reservations</a></p>
+    </div>
+
+    <!--Scripts enable navbar to function on a smaller screen with a toggle button-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

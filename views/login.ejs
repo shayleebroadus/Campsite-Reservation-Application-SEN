@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FamCamp Home</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <style>
+        .navbar-header-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem 0;
+            background-color: darkgoldenrod;
+            margin-bottom: 0;
+        }
+        .navbar-nav {
+            flex: 1;
+            justify-content: space-around;
+            background-color: #F5DAAB;
+            margin-top: 0;
+        }
+        .navbar-nav .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 1px 0px 0px 0px;
+        }
+        body {
+            background-color: #E3EEF1;
+        }
+        .card-image {
+            width: 362px;
+            height: 200px;
+        }
+        .login-form-container {
+            border: 2px solid darkgoldenrod;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+    </style>
+    <script>
+        function checkUser(event) {
+            event.preventDefault();  // Prevent the form from submitting
+            const username = document.getElementById("username").value;
+            if (username === "") {
+                document.getElementById("message").innerHTML = "Please enter a username";
+            } else {
+                // Manually submit the form now that the username is checked
+                document.getElementById("usernameForm").submit();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar-header-text">
+            Hill Air Force Base FamCamp
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Camp Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reservations/Pricing</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid vh-100" style="margin-top:10px">
+        <div class="" style="margin-top:100px">
+            <div class="rounded d-flex justify-content-center">
+                <div class="col-md-4 col-sm-12 shadow-lg p-5 login-form-container">
+                    <div class="text-center">
+                        <h3 class="text-goldenrod">Sign In</h3>
+                    </div>
+                    <form id="usernameForm" onSubmit="checkUser(event);" method="post">
+                        <div class="p-4">
+                            <div class="input-group mb-3">
+                                <input id="username" name="username" type="text" class="form-control" autofocus="autofocus" placeholder="Username">
+                            </div>
+                            <div>
+                                <p id="message" class="text-danger" style="height:25px"><%= message %></p>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn bg-f5daab mt-2" type="submit">
+                                    Next
+                                </button>
+                            </div>
+                            <p class="text-center mt-5">Don't have an account?
+                                <span class="text-goldenrod"><a href="/register">Sign Up</a></span>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

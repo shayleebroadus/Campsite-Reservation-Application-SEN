@@ -1,0 +1,167 @@
+
+
+/**/
+/*Used for the Employee, Reservation, and ReservationQuery Pages*/
+
+/* sets a grid to hold the main focus and side details */
+.grid-container{
+    display:grid;
+    margin: 3%;
+    grid-template-columns:85% 15%;
+    grid-template-rows: auto;
+    padding-left:100px;
+    float:left;
+}
+
+/*Sets the location for the r1c1 class*/
+.r1c1{
+    grid-row:2;
+    grid-column: 1;
+}
+
+/*Sets the location for the r1c2 class*/
+.r1c2{
+    grid-row:2;
+    grid-column: 2;
+}
+
+
+/*configuring the search bar*/
+.search{
+    width:100%;
+    margin:1%;
+}
+/*Label for the search filter*/
+.search>form>label{
+    padding-left:130px;
+    width:15%;
+    float:left;
+}
+
+/*Select element for filtering*/
+#searchfilter{
+    width:10%;
+    position:absolute;
+    left:225px;
+    /*float:left;*/
+}
+
+/*Div that holds search bar input*/
+#searchBar{
+    width:300px;;
+    float:left;
+    /* position:absolute; */
+    margin-left:14%;
+    right:150px;
+}
+
+#searchInput{
+    width:300px;
+    float:left;
+}
+
+
+/*fixing the aside elements*/
+
+/*Fixing the change button to fit better*/
+.r1c2>#changePass>form>button{
+    margin-top:5%;
+    margin-left:25%;
+    
+}
+
+/*Formatting change password div to be more 
+clear */
+#changePass{
+ margin-top:8%;
+}
+
+#changePass>form>div{
+    margin:3%;
+}
+
+/*Formatting the report table*/
+.r1c1>table{
+
+    margin-right:10%;
+    width:90%;
+    background-color: rgb(247, 246, 200);
+}
+
+td{
+    border: 2px solid #E3EEF1;
+}
+
+tr:nth-child(odd){
+    background-color: rgb(247, 245, 154);
+}
+
+
+/*All button style 
+TRBL*/
+button{
+    border-radius: 20px;
+    padding: 2% 3% 2% 3%;
+    background-color: rgb(56, 15, 131);
+    border-color:rgb(44, 11, 104);
+    border-width: 2px;
+    color:rgb(184, 241, 248);
+}
+
+#searchbtn{
+    padding:2%, 3%;
+}
+
+
+.res-grid{
+    display:grid;
+    grid-template-columns:50% 50%;
+    grid-template-rows: auto;
+}
+
+#col1{
+    margin: 2%;
+    padding:5%;
+    border-style: groove;
+    border-width: 5px;
+    background-color: #edde6d;
+}
+
+#col2{
+    width:300px;
+    margin: 2%;
+    padding:5%;
+    border-style: groove;
+    border-width: 5px;
+    background-color: #edde6d;
+}
+
+#ruleAgreement{
+    float:left;
+    width:20px;
+    height:20px;
+}
+
+#labelagree{
+    width:150px;
+    height:70;
+    float:left;
+}
+
+#message{
+    width: 100%;
+    height: 100%;
+}
+
+input{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#trailer{
+    margin-right: 50px;
+}
+
+.site{
+    margin: 2%;
+}

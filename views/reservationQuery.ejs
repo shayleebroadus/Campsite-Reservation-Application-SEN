@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/EmployeeStyle.css">
+
+    <title>Reservations</title>
+    <style>
+        .navbar-header-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem 0;
+            background-color: darkgoldenrod;
+            margin-bottom: 0;
+        }
+        .navbar-nav {
+            flex: 1;
+            justify-content: space-around;
+            background-color: #F5DAAB;
+            margin-top: 0;
+        }
+        .navbar-nav .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 1px 0px 0px 0px;
+        }
+        body {
+          background-color: #E3EEF1;
+        }
+        .card-image {
+          width: 362px;
+          height: 200px;
+        }
+    </style>
+</head>
+    
+    
+<body>
+    <div class="container">
+        <div class="navbar-header-text">
+            Make A Reservation
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Camp Rules</a>
+                    </li>
+                    <li class="nav-item" hidden>
+                        <a class="nav-link" href="#">View reports</a>
+                    </li>
+                    <li class="nav-item" hidden>
+                        <a class="nav-link" href="#">My Reservations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reservations/Pricing <span class="sr-only">(current)</span></a>
+                    </li>
+                    <span class="navbar-text nav-item">
+                        <% if (!loggedIn) { %>
+                            <a class="btn btn-link" href="/login" id="login">Log-in</a>
+                        <% } else { %>
+                            <a class="btn btn-link" href="/logout" id="logout">Log-out</a>
+                        <% } %>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="search">
+    <!--this will hold the reservation search function-->
+        <form>
+            <label for="searchfilter">Search by:</label>
+            <select id="searchfilter">
+                <option value="date" selected>Date</option>
+                <option value="reservor">Reservor</option>
+                <option value="site">Site</option>
+            </select>
+            <div id="searchBar">
+                <input id="searchInput" name="searchBar" type="text" placeholder="Search">
+            </div>
+        </form>
+        
+    </div>
+
+    <div class="grid-container">
+        
+        <div class="r1c1">
+    <!--This will hold the availability or search results-->
+            <!--if data is passed-->
+            <table id="report">
+                <thead>
+                    <tr>
+                        <th>Site</th>
+                        <th>Type</th>
+                        <th>Length</th>
+                        <th>Days Available</th>
+                        <th>Hook-ups</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>sample0</td>
+                    </tr>
+                    <tr>
+                        <td>sample1</td>
+                    </tr>
+                    <tr>
+                        <td>sample2</td>
+                    </tr>
+                    <tr>
+                        <td>sample3</td>
+                    </tr>
+                    <tr>
+                        <td>sample4</td>
+                    </tr>
+                    <tr>
+                        <td>sample5</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--else display "RECORD RETRIEVAL ERROR"-->
+        </div>
+        <div class="r1c2">
+    <!--this will hold filter details and a change password funtion-->
+            <form>
+            <!--Site type and length-->
+            <div id="siteFilter">
+                <label for="siteType">Site Type:</label>
+                <select id="siteType">
+                    <option value="trailer">Trailer</option>
+                    <option value="tent">Tent</option>
+                    <option value="rentTrailer">Rent a Trailer</option>
+                    <option value="dryStorage">Dry storage </option>
+                </select>
+            </div>
+            <div id="lengthFilter">
+                <label for="length">Your Trailer Length: </label>
+                <input id="length">
+            </div>
+                <button>Filter</button>
+            </form>
+            <div id="changePass">
+                <h2>Change Password</h2>
+                    <form>
+                        <label for="username">Username:</label>
+                        <input id="username">
+                        <label for="newPass">New Password:</label>
+                        <input id="newPass">
+                        <button>Change</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

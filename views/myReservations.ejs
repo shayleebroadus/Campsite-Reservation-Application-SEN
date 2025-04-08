@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar-header-text">
+            Hill Air Force Base FamCamp
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="aboutus">About Us</a>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="camprules">Camp Rules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reservation">Reservations/Pricing</a>
+                    </li>
+                    <span class="navbar-text nav-item">
+                        <% if (!loggedIn) { %>
+                            <a class="btn btn-link" href="/login" id="login">Log-in</a>
+                        <% } else { %>
+                            <a class="btn btn-link" href="/logout" id="logout">Log-out</a>
+                        <% } %>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1>myReservation Page</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Site #</th>
+            <th scope="col">Spot Type</th>
+            <th scope="col">First Night</th>
+            <th scope="col">Last Night</th>
+            <th scope="col">Length of Stay</th>
+            <th scope="col">Hook-ups</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% reservationsData.forEach(function(reservation) { %>
+                <% 
+                var site = siteData.find(function(site) {
+                    return site.site_id == reservation.site_id;
+                }); 
+                %>
+                <tr>
+                    <th scope="row"><%= reservation.site_id %></th>
+                    <td><%= reservation.spot_type %></td>
+                    <td><%= new Date(reservation.first_night).toDateString() %></td>
+                    <td><%= new Date(reservation.last_night).toDateString() %></td>
+                    <td><%= reservation.length_of_stay %></td>
+                    <td><%= site ? (site.has_hookups ? 'Yes' : 'No') : '' %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+      </table>
+      <h4>Look at your profile <a href="customer" class="btn btn-primary">here!</a></h4>
+</body>
+</html>
